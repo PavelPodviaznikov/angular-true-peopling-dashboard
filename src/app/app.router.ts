@@ -13,6 +13,7 @@ export default RouterModule.forRoot([
   },
   {
     path: '',
-    component: DashboardComponent
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
   }
 ]);

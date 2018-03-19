@@ -1,2 +1,10 @@
 
-  <mat-card class="login-container">Simple card</mat-card>
+  <mat-card class="login-container">
+    <mat-card-content>
+      <app-logo></app-logo>
+      <h1>True peopling</h1>
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="google-login-button" mat-raised-button (click)="googleLogin()">Login</button>
+    </mat-card-actions>
+  </mat-card>

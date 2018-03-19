@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body, app-root, app-login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  margin: 0;
+}
+
+app-login {
+  justify-content: center;
+  align-items: center;
+}

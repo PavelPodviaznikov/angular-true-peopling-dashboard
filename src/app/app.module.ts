@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import router from './app.router';
 import { AuthGuard } from './guard/auth.guard';
+import { SharedModule } from './_common/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +14,12 @@ import { AuthGuard } from './guard/auth.guard';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AuthModule,
     DashboardModule,
     router
   ],
+  exports: [],
   providers: [ AuthGuard ],
   bootstrap: [ AppComponent ]
 })

@@ -40,7 +40,10 @@ export class AuthService {
     const idToken = this.getTokenFromLS();
 
     this.http.post<responseData>(url, { idToken }, { headers: { 'Content-Type': 'application/json' } })
-      .subscribe(this.onLoginSuccess, this.onLoginFail)
+      .subscribe(
+        response => this.onLoginSuccess(response),
+        error => this.onLoginFail(error)
+      );
   }
 
   logout() {}

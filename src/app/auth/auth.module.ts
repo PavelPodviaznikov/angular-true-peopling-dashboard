@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from '../_common/material.module';
 import { LogoComponent } from '../_common/_components/logo/logo.component';
-import { AuthService } from 'angular2-google-login';
+import * as GoogleAuth from 'angular2-google-login';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   declarations: [ LoginComponent, LogoComponent ],
-  providers: [ AuthService ]
+  providers: [ GoogleAuth.AuthService, AuthService ]
 })
 export class AuthModule { }

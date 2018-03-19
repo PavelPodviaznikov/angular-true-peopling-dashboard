@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import router from './app.router';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import router from './app.router';
     DashboardModule,
     router
   ],
-  providers: [],
+  providers: [ AuthGuard ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { RouterModule} from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { AuthGuard } from './guard/auth.guard';
 
 export default RouterModule.forRoot([
   {
@@ -9,7 +10,8 @@ export default RouterModule.forRoot([
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path: '',

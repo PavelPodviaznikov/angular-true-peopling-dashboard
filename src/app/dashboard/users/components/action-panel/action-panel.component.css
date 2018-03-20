@@ -1,0 +1,36 @@
+.action-panel {
+  display: flex;
+  padding: 0 16px;
+}
+
+.action-panel .add-user-btn {
+  padding: 5px 16px;
+  color: #72ba3a;
+  cursor: pointer;
+  font-size: 30px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.action-panel .add-user-btn:hover {
+  opacity: 0.8;
+}
+
+.action-panel .user-filter-container {
+  display: flex;
+  align-items: center;
+}
+
+.action-panel .user-filter-container .users-filter {
+  font-size: 14px;
+}
+
+.action-panel .user-filter-container .reset-users-filter-btn {
+  cursor: pointer;
+}
+
+.action-panel .user-filter-container .reset-users-filter-btn:hover {
+  color: #ff0000;
+}
+

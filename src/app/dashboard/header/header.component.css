@@ -1,0 +1,30 @@
+.header {
+  background-color: #000;
+}
+
+.header .logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+}
+
+.header .logout-btn {
+  color: #0094de;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.header .user-info {
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.header .user-info img {
+  height: 25px;
+  margin: 0 10px;
+  border: 2px solid #0094de;
+  border-radius: 4px;
+}

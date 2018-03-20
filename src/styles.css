@@ -25,3 +25,8 @@ app-dashboard app-users {
   flex: 1;
   flex-direction: column;
 }
+
+.flex {
+  display: flex;
+  flex: 1;
+}

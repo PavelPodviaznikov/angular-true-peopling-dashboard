@@ -1,4 +1,10 @@
 .users-container {
   display: flex;
   flex: 1;
+  flex-direction: column;
+}
+
+.users-container .users-table-container {
+  display: flex;
+  flex: 1;
 }

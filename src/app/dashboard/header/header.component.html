@@ -1,3 +1,9 @@
-<mat-toolbar>
-  <app-logo></app-logo>
+<mat-toolbar class="header">
+  <app-logo class="logo"></app-logo>
+  <span class="flex"></span>
+  <div class="user-info">
+    <img src="{{user.photo}}" alt="User avatar">
+    <span>{{user.fullName}}</span>
+  </div>
+  <button class="logout-btn" mat-button (click)="logout()">Logout</button>
 </mat-toolbar>

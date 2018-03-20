@@ -4,6 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../_common/shared.module';
+import { UsersTableComponent } from './users/components/table/users-table.component';
+import { ActionPanelComponent } from './users/components/action-panel/action-panel.component';
 
 @NgModule({
   imports: [
@@ -11,9 +13,11 @@ import { SharedModule } from '../_common/shared.module';
     SharedModule
   ],
   declarations: [
-    HeaderComponent, 
-    UsersComponent, 
-    DashboardComponent
+    HeaderComponent,
+    UsersComponent,
+    DashboardComponent,
+    UsersTableComponent,
+    ActionPanelComponent
   ]
 })
 export class DashboardModule { }

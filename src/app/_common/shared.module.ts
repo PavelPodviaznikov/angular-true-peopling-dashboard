@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
-import { LogoComponent } from './_components/logo/logo.component';
-
+import { LogoComponent } from './components/logo/logo.component';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   imports: [
@@ -13,8 +13,9 @@ import { LogoComponent } from './_components/logo/logo.component';
     MaterialModule,
     LogoComponent
   ],
-  declarations: [ 
+  declarations: [
     LogoComponent
-   ]
+  ],
+  providers: [ LocalStorageService ]
 })
 export class SharedModule { }

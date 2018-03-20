@@ -3,13 +3,15 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-interface User {
-  email: string
-}
+import * as GoogleAuth from 'angular2-google-login';
+
+import User from '../_common/models/user.model';
+import ApiUser from '../_common/interfaces/api-user.interface';
+import { LocalStorageService } from '../_common/services/local-storage.service';
 
 interface responseData {
   data: {
-    user: User
+    user: ApiUser
   }
 }
 
@@ -18,10 +20,11 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private googleAuth: GoogleAuth.AuthService,
+    private localStorage: LocalStorageService
   ) { }
 
   private user: User;
-  private loggedInStatus = false;
 
   set activeUser(user) {
     this.user = user;
@@ -32,7 +35,13 @@ export class AuthService {
   }
 
   get isLoggedIn() {
-    return this.loggedInStatus;
+    return this.localStorage.getGoogleUser();
+  }
+
+  googleLogin() {
+    this.googleAuth.authenticateUser( success => {
+      if(success) this.login();
+    });
   }
 
   login() {
@@ -46,20 +55,26 @@ export class AuthService {
       );
   }
 
-  logout() {}
+  logout() {
+    // this.googleAuth.userLogout(()=>{
+    //   // this.router.navigate(['login']);
+    // });
+    this.localStorage.resetGoogleUser();
+    this.router.navigate(['login']);
+  }
 
   private getTokenFromLS() {
-    return localStorage.getItem('token');
+    return this.localStorage.getGoogleToken();
   }
 
   private onLoginSuccess(response) {
-    this.activeUser = response.data.user;
-    this.loggedInStatus = true;
+    this.localStorage.setGoogleUser(response.data.user);
+    this.activeUser = new User(response.data.user);
     this.router.navigate(['dashboard']);
   }
 
   private onLoginFail(error) {
-    this.loggedInStatus = true;
+    this.localStorage.resetGoogleUser();
     this.activeUser = null;
 
     console.log('error', error);

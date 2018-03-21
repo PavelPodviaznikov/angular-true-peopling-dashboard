@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,6 +18,7 @@ import { SharedModule } from './_common/shared.module';
     SharedModule,
     AuthModule,
     DashboardModule,
+    NoopAnimationsModule,
     router
   ],
   exports: [],

@@ -10,8 +10,8 @@ import { LocalStorageService } from './services/local-storage.service';
     MaterialModule
   ],
   exports: [
-    MaterialModule,
-    LogoComponent
+    LogoComponent,
+    MaterialModule
   ],
   declarations: [
     LogoComponent

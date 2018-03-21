@@ -8,6 +8,14 @@ export class LocalStorageService {
     localStorage.setItem('googleUser', JSON.stringify(user));
   }
 
+  setAccessToken(token) {
+    localStorage.setItem('accessToken',token);
+  }
+
+  getAccessToken() {
+    return localStorage.getItem('accessToken');
+  }
+
   getGoogleUser() {
     const user = localStorage.getItem('googleUser');
 

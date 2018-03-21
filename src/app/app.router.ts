@@ -6,7 +6,7 @@ import { AuthGuard } from './guard/auth.guard';
 export default RouterModule.forRoot([
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'dashboard',

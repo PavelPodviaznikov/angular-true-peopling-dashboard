@@ -16,7 +16,7 @@ interface responseData {
 }
 
 @Injectable()
-export class AuthService {
+export class AuthService2 {
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -69,8 +69,12 @@ export class AuthService {
 
   private onLoginSuccess(response) {
     this.localStorage.setGoogleUser(response.data.user);
+    this.localStorage.setAccessToken(response.data.accessToken);
     this.activeUser = new User(response.data.user);
-    this.router.navigate(['dashboard']);
+
+    setTimeout(() => {
+      this.router.navigate(['dashboard']);
+    }, 1000);
   }
 
   private onLoginFail(error) {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { AuthService } from '../auth.service';
+import { AuthService2 } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   constructor(
-    private auth: AuthService
+    private auth: AuthService2
   ) { }
 
   ngOnInit() {

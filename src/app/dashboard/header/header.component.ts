@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService2 } from '../../auth/auth.service';
 import User from '../../_common/models/user.model';
 import { LocalStorageService } from '../../_common/services/local-storage.service';
 
@@ -11,16 +11,20 @@ import { LocalStorageService } from '../../_common/services/local-storage.servic
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private auth: AuthService,
+    private auth: AuthService2,
     private localStorage: LocalStorageService
-  ) { }
+  ) {
+    console.log('constructor');
+   }
 
   get user() {
     return this.auth.activeUser;
   }
 
   ngOnInit() {
+    console.log('onInit');
     const user = this.localStorage.getGoogleUser();
+    console.log(user);
 
     if(!user) return;
 

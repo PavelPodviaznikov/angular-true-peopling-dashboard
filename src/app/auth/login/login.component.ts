@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { AuthService2 } from '../auth.service';
+import { GoogleAuthService } from '../google-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +9,10 @@ import { AuthService2 } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   constructor(
-    private auth: AuthService2
+    private googleAuth: GoogleAuthService
   ) { }
 
   ngOnInit() {
-    this.googleLogin(); // need to click login btn twice without this call
-  }
-
-  googleLogin() {
-    this.auth.googleLogin();
+    this.googleAuth.init();
   }
 }

@@ -4,29 +4,35 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   constructor() { }
 
-  setGoogleUser(user: Object) {
-    localStorage.setItem('googleUser', JSON.stringify(user));
+  setUser(user) {
+    localStorage.setItem('peopling-api-user', JSON.stringify(user));
+  }
+
+  getUser() {
+    const user = localStorage.getItem('peopling-api-user');
+
+    return JSON.parse(user);
   }
 
   setAccessToken(token) {
-    localStorage.setItem('accessToken',token);
+    localStorage.setItem('peopling-api-token',token);
   }
 
   getAccessToken() {
-    return localStorage.getItem('accessToken');
+    return localStorage.getItem('peopling-api-token');
   }
 
-  getGoogleUser() {
-    const user = localStorage.getItem('googleUser');
-
-    return user ? JSON.parse(user) : null;
-  }
-
-  resetGoogleUser() {
-    localStorage.setItem('googleUser', '');
+  setGoogleToken(token) {
+    localStorage.setItem('peopling-google-token', token);
   }
 
   getGoogleToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('peopling-google-token');
+  }
+
+  reset() {
+    this.setAccessToken('');
+    this.setGoogleToken('');
+    this.setUser({});
   }
 }

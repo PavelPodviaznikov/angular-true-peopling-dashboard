@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
-import * as GoogleAuth from 'angular2-google-login';
 
 import User from '../_common/models/user.model';
 import ApiUser from '../_common/interfaces/api-user.interface';
@@ -16,12 +14,12 @@ interface responseData {
 }
 
 @Injectable()
-export class AuthService2 {
+export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private googleAuth: GoogleAuth.AuthService,
-    private localStorage: LocalStorageService
+    private ls: LocalStorageService,
+    private zone: NgZone
   ) { }
 
   private user: User;
@@ -35,18 +33,12 @@ export class AuthService2 {
   }
 
   get isLoggedIn() {
-    return this.localStorage.getGoogleUser();
-  }
-
-  googleLogin() {
-    this.googleAuth.authenticateUser( success => {
-      if(success) this.login();
-    });
+    return this.ls.getAccessToken();
   }
 
   login() {
     const url = `${environment.constants.BASE_URL}/auth/signin`;
-    const idToken = this.getTokenFromLS();
+    const idToken = this.ls.getGoogleToken();
 
     this.http.post<responseData>(url, { idToken }, { headers: { 'Content-Type': 'application/json' } })
       .subscribe(
@@ -56,29 +48,20 @@ export class AuthService2 {
   }
 
   logout() {
-    // this.googleAuth.userLogout(()=>{
-    //   // this.router.navigate(['login']);
-    // });
-    this.localStorage.resetGoogleUser();
+    this.ls.reset();
     this.router.navigate(['login']);
   }
 
-  private getTokenFromLS() {
-    return this.localStorage.getGoogleToken();
-  }
-
   private onLoginSuccess(response) {
-    this.localStorage.setGoogleUser(response.data.user);
-    this.localStorage.setAccessToken(response.data.accessToken);
-    this.activeUser = new User(response.data.user);
+    this.ls.setUser(response.data.user);
+    this.ls.setAccessToken(response.data.accessToken);
 
-    setTimeout(() => {
-      this.router.navigate(['dashboard']);
-    }, 1000);
+    this.activeUser = new User(response.data.user);
+    this.zone.run(() => this.router.navigate(['dashboard']));
   }
 
   private onLoginFail(error) {
-    this.localStorage.resetGoogleUser();
+    // this.ls.resetGoogleUser();
     this.activeUser = null;
 
     console.log('error', error);

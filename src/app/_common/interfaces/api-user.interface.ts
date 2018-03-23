@@ -1,5 +1,5 @@
 export default interface ApiUser {
-  id: string,
+  _id: string,
   email: string,
   deleted: boolean,
   first_name: string,

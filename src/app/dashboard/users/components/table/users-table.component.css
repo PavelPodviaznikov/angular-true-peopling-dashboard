@@ -2,4 +2,11 @@
   display: flex;
   flex: 1;
   margin: 5px;
+  overflow: auto;
+}
+
+.users-table mat-table {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }

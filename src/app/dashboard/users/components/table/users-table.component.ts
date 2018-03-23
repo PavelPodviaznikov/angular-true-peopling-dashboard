@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../users.service';
 
 @Component({
   selector: 'app-users-table',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private usersService: UsersService
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  users = this.usersService.users;
+  displayedColumns = ['firstName', 'lastName', 'email', 'role'];
 }

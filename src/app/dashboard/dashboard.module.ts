@@ -7,6 +7,7 @@ import { SharedModule } from '../_common/shared.module';
 import { UsersTableComponent } from './users/components/table/users-table.component';
 import { ActionPanelComponent } from './users/components/action-panel/action-panel.component';
 import { UsersService } from './users/users.service';
+import { FilterPipe } from '../_common/pipes/filter';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { UsersService } from './users/users.service';
     HeaderComponent,
     UsersComponent,
     UsersTableComponent,
-    ActionPanelComponent
+    ActionPanelComponent,
+    FilterPipe
   ],
   providers: [ UsersService ]
 })

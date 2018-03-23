@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../users.service';
 
 @Component({
   selector: 'app-action-panel',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./action-panel.component.css']
 })
 export class ActionPanelComponent implements OnInit {
-  constructor() { }
-
+  constructor(
+    private usersService: UsersService
+  ) { }
   ngOnInit() {}
+
+  filter = this.usersService.filter;
 
   onAddUser() {}
 }

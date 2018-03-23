@@ -20,6 +20,10 @@ export class UsersService {
 
   users: Array<User> = [];
 
+  filter: Object = {
+    value: ""
+  };
+
   loadUsers() {
     const url = `${environment.constants.BASE_URL}/users`;
     const authorization = `Bearer ${this.ls.getAccessToken()}`;

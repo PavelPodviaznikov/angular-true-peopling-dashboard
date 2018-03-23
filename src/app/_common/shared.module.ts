@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { LogoComponent } from './components/logo/logo.component';
 import { LocalStorageService } from './services/local-storage.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     LogoComponent,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   declarations: [
     LogoComponent

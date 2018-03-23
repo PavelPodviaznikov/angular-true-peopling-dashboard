@@ -14,6 +14,7 @@ export class UsersTableComponent implements OnInit {
 
   ngOnInit() {}
 
+  filter = this.usersService.filter;
   users = this.usersService.users;
   displayedColumns = ['firstName', 'lastName', 'email', 'role'];
 }

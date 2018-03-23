@@ -2,7 +2,7 @@
 
   <h1 *ngIf="!users.length">Loading...</h1>
 
-  <mat-table #table [dataSource]="users" *ngIf="users.length">
+  <mat-table #table [dataSource]="users | filter: filter.value" *ngIf="users.length">
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->

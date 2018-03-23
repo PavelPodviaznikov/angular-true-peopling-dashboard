@@ -10,3 +10,8 @@
   flex: 1;
   flex-direction: column;
 }
+
+.users-table mat-table mat-row:hover {
+  background-color: #eff8fc
+  ;
+}

@@ -8,6 +8,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import router from './app.router';
 import { AuthGuard } from './guard/auth.guard';
 import { SharedModule } from './_common/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppHttpInterceptor } from './_common/services/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { SharedModule } from './_common/shared.module';
     router
   ],
   exports: [],
-  providers: [ AuthGuard ],
+  providers: [ 
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }
+   ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

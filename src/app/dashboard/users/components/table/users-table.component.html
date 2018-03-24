@@ -1,38 +1,31 @@
 <mat-card class="users-table">
 
-  <h1 *ngIf="!users.length">Loading...</h1>
+  <app-spinner class="spinner" *ngIf="!users.length"></app-spinner>
 
   <mat-table #table [dataSource]="users | filter: filter.value" *ngIf="users.length">
 
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> First name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+    </ng-container>
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef> First name </mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+    </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+    </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.roleText}} </mat-cell>
+    </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.roleText}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
 </mat-card>

@@ -30,3 +30,7 @@ app-dashboard app-users {
   display: flex;
   flex: 1;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #0094de;
+}

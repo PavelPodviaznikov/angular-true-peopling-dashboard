@@ -16,5 +16,5 @@ export class UsersTableComponent implements OnInit {
 
   filter = this.usersService.filter;
   users = this.usersService.users;
-  displayedColumns = ['firstName', 'lastName', 'email', 'role'];
+  displayedColumns = ['firstName', 'lastName', 'email', 'role', 'actions'];
 }

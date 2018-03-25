@@ -1,0 +1,9 @@
+.edit-user-btn {
+  cursor: pointer;
+  user-select: none;
+}
+
+.edit-user-btn:hover {
+  color: #0094de;
+  opacity: 0.8;
+}

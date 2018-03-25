@@ -1,0 +1,13 @@
+.add-user-btn {
+  padding: 5px 16px;
+  color: #72ba3a;
+  cursor: pointer;
+  font-size: 30px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.add-user-btn:hover {
+  opacity: 0.8;
+}

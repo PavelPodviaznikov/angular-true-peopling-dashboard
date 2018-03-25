@@ -3,20 +3,6 @@
   padding: 0 16px;
 }
 
-.action-panel .add-user-btn {
-  padding: 5px 16px;
-  color: #72ba3a;
-  cursor: pointer;
-  font-size: 30px;
-  user-select: none;
-  display: flex;
-  align-items: center;
-}
-
-.action-panel .add-user-btn:hover {
-  opacity: 0.8;
-}
-
 .action-panel .user-filter-container {
   display: flex;
   align-items: center;

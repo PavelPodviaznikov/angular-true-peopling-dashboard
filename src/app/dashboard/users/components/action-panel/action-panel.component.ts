@@ -13,6 +13,4 @@ export class ActionPanelComponent implements OnInit {
   ngOnInit() {}
 
   filter = this.usersService.filter;
-
-  onAddUser() {}
 }

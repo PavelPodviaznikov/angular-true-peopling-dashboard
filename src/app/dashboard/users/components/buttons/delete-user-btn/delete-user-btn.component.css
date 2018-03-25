@@ -1,0 +1,9 @@
+.delete-user-btn {
+  cursor: pointer;
+  user-select: none;
+}
+
+.delete-user-btn:hover {
+  color: #cd3737;
+  opacity: 0.8;
+}

@@ -13,7 +13,6 @@ interface responseData {
 export class UsersService {
   constructor(
     private http: HttpClient,
-    private ls: LocalStorageService,
   ) {
 
   }
@@ -26,12 +25,53 @@ export class UsersService {
 
   loadUsers() {
     const url = `${environment.constants.BASE_URL}/users`;
-    const authorization = `Bearer ${this.ls.getAccessToken()}`;
 
-    this.http.get<responseData>(url, { headers: { "Authorization": authorization } })
+    this.http.get<responseData>(url)
       .subscribe(response => {
         this.users.length = 0;
         this.users.push(...response.data.map(user => new User(user)));
       });
+  }
+
+  saveUser(user) {
+    return user.id ?
+      this.updateUser(user) :
+      this.createUser(user);
+  }
+
+  private createUser(user) {
+    const url = `${environment.constants.BASE_URL}/users`;
+
+    this.http.post<responseData>(url, user)
+      .subscribe(
+        response => this.onUserCreateSuccess(response),
+        e => this.onUserCreateFail(e)
+      );
+  }
+
+  private updateUser(user) {
+    const url = `${environment.constants.BASE_URL}/users/${user.id}`;
+
+    this.http.put<responseData>(url, user)
+      .subscribe(
+        response => this.onUserUpdateSuccess(response),
+        e => this.onUserUpdateFail(e)
+      );
+  }
+  
+  private onUserCreateSuccess(response) {
+    debugger;
+  }
+
+  private onUserCreateFail(e) {
+    debugger;
+  }
+
+  private onUserUpdateSuccess(response) {
+    debugger;
+  }
+
+  private onUserUpdateFail(e) {
+    debugger;
   }
 }

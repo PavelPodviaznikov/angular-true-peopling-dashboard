@@ -27,7 +27,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let user"> 
-        <app-edit-user-btn></app-edit-user-btn>
+        <app-edit-user-btn [user]="user"></app-edit-user-btn>
         <app-delete-user-btn></app-delete-user-btn>
       </mat-cell>
     </ng-container>

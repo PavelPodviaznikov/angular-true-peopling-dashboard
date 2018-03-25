@@ -37,4 +37,16 @@ export default class User {
   get roleText() {
     return roles[this.role];
   }
+
+  static defaulUser() {
+    return new User({
+      _id: null,
+      email: '',
+      first_name: '',
+      last_name: '',
+      photo: null,
+      deleted: false,
+      role: 'regular_user'
+    });
+  }
 }

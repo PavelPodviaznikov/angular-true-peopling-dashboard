@@ -1,0 +1,8 @@
+.user-dialog {
+  min-width: 400px;
+}
+
+.user-dialog mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import User from '../../../../../_common/models/user.model';
+import { UserDialogService } from '../../dialogs/user-dialog/user.dialog.service';
 
 @Component({
   selector: 'app-edit-user-btn',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-user-btn.component.css']
 })
 export class EditUserBtnComponent implements OnInit {
+  constructor(
+    private dialog:UserDialogService
+  ) { }
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  @Input() user: User;
+
+  onClick() {
+    this.dialog.openDialog(this.user);
   }
-
 }

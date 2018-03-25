@@ -5,13 +5,22 @@ import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
   constructor(
-    private router: Router
+    private router: Router,
+    private ls: LocalStorageService
   ) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    request = request.clone({
+      setHeaders: {
+        "Authorization": `Bearer ${this.ls.getAccessToken()}`,
+        "Content-Type": "application/json"
+      }
+    });
+
     return next
       .handle(request)
       .catch(response => {

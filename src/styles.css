@@ -35,12 +35,12 @@ app-dashboard app-users {
   stroke: #0094de;
 }
 
-.green-bordered-btn {
+.green-bordered-btn:not(:disabled) {
   border: 1px solid #72ba3a!important;
   color: #72ba3a!important;
 }
 
-.green-bordered-btn:hover {
+.green-bordered-btn:not(:disabled):hover {
   background-color: #72ba3a!important;
   color: #fff!important;
 }
@@ -54,5 +54,12 @@ app-dashboard app-users {
   background-color: #72ba3a!important;
   opacity: 0.3;
 }
+
+/* button:disabled {
+  border: none!important;
+  color: rgba(0,0,0,.26)!important;
+  cursor: default!important;
+  background-color: transparent!important;
+} */
 
 

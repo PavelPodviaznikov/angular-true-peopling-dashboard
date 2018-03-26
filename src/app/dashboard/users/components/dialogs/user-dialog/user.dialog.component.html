@@ -6,29 +6,29 @@
 
   <mat-dialog-content>
     <mat-form-field>
-      <input matInput placeholder="First name" [(ngModel)]="user.firstName">
+      <input matInput placeholder="First name" [(ngModel)]="user.firstName" [disabled]="config.processing">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Last name" [(ngModel)]="user.lastName">
+      <input matInput placeholder="Last name" [(ngModel)]="user.lastName" [disabled]="config.processing">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Email" [(ngModel)]="user.email">
+      <input matInput placeholder="Email" [(ngModel)]="user.email" [disabled]="config.processing">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Select" [(value)]="user.role">
+      <mat-select placeholder="Select" [(value)]="user.role" [disabled]="config.processing">
         <mat-option *ngFor="let role of roles | objectKeys" [value]="role.key">{{role.value}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-checkbox *ngIf="!user.id" [(ngModel)]="config.createAnother">Create another user</mat-checkbox>
+    <mat-checkbox *ngIf="!user.id" [(ngModel)]="config.createAnother" [disabled]="config.processing">Create another user</mat-checkbox>
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button class="green-bordered-btn" mat-button (click)="submit()">{{config.actions.submit}}</button>
-    <button mat-button mat-dialog-close>{{config.actions.cancel}}</button>
+    <button class="green-bordered-btn" mat-button (click)="submit()" [disabled]="config.processing">{{config.actions.submit}}</button>
+    <button mat-button mat-dialog-close [disabled]="config.processing">{{config.actions.cancel}}</button>
     <span class="flex"></span>
     <app-spinner *ngIf="config.processing" [size]="30"></app-spinner>
   </mat-dialog-actions>

@@ -26,7 +26,7 @@ export class UserDialogComponent implements OnInit {
   config = {
     title: this.user.id ? "Edit user" : "Create user",
     createAnother: false,
-    processing: true,
+    processing: false,
     actions: {
       submit: this.user.id ? "Edit" : "Create",
       cancel: "Cancel"

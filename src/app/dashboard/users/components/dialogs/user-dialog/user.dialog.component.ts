@@ -37,9 +37,15 @@ export class UserDialogComponent implements OnInit {
     this.config.processing = true;
 
     this.data.submitDialogHandler(this.user).subscribe(() => {
-      if(this.config.createAnother) this.user = User.defaultUser();
-
       this.config.processing = false;
+
+      if(!this.config.createAnother) {
+        this.close();
+
+        return false;
+      }
+
+      this.user = User.defaultUser();
     });
   }
 

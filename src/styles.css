@@ -45,8 +45,8 @@ app-dashboard app-users {
   color: #fff!important;
 }
 
-.mat-checkbox-checked.mat-accent .mat-checkbox-background,
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+.mat-checkbox-checked.mat-accent .mat-checkbox-background:not(:disabled),
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background:not(:disabled) {
   background-color: #72ba3a!important;
 }
 
@@ -54,12 +54,5 @@ app-dashboard app-users {
   background-color: #72ba3a!important;
   opacity: 0.3;
 }
-
-/* button:disabled {
-  border: none!important;
-  color: rgba(0,0,0,.26)!important;
-  cursor: default!important;
-  background-color: transparent!important;
-} */
 
 

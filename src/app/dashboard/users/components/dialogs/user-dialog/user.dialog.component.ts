@@ -26,6 +26,7 @@ export class UserDialogComponent implements OnInit {
   config = {
     title: this.user.id ? "Edit user" : "Create user",
     createAnother: false,
+    processing: true,
     actions: {
       submit: this.user.id ? "Edit" : "Create",
       cancel: "Cancel"
@@ -33,9 +34,13 @@ export class UserDialogComponent implements OnInit {
   };
 
   submit() {
-    this.data.submitDialogHandler(this.user);
+    this.config.processing = true;
 
-    if(this.config.createAnother) this.user = User.defaultUser();
+    this.data.submitDialogHandler(this.user).subscribe(() => {
+      if(this.config.createAnother) this.user = User.defaultUser();
+
+      this.config.processing = false;
+    });
   }
 
   close() {

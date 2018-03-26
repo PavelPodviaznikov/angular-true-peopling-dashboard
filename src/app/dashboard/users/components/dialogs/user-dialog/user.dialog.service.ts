@@ -24,7 +24,7 @@ export class UserDialogService {
       data: {
         user,
         submitDialogHandler(user) {
-          me.submit(user);
+          return me.submit(user);
         },
         closeDialogHandler() {
           me.dialog.closeAll();
@@ -38,8 +38,6 @@ export class UserDialogService {
   }
 
   submit(user) {
-    this.usersService.saveUser(user).subscribe(() => {
-      console.log('saved')
-    });
+    return this.usersService.saveUser(user);
   }
 }

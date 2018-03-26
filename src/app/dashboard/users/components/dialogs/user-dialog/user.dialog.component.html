@@ -3,6 +3,7 @@
     <h2 mat-dialog-title>{{config.title}}</h2>
     <app-close-dialog-btn (click)="close()"></app-close-dialog-btn>
   </div>
+
   <mat-dialog-content>
     <mat-form-field>
       <input matInput placeholder="First name" [(ngModel)]="user.firstName">
@@ -28,5 +29,7 @@
   <mat-dialog-actions>
     <button class="green-bordered-btn" mat-button (click)="submit()">{{config.actions.submit}}</button>
     <button mat-button mat-dialog-close>{{config.actions.cancel}}</button>
+    <span class="flex"></span>
+    <app-spinner *ngIf="config.processing" [size]="30"></app-spinner>
   </mat-dialog-actions>
 </div>

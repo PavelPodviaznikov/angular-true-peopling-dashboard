@@ -6,6 +6,7 @@ import { LocalStorageService } from './services/local-storage.service';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CloseDialogBtnComponent } from './components/close-dialog-btn/close-dialog-btn.component';
+import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,12 @@ import { CloseDialogBtnComponent } from './components/close-dialog-btn/close-dia
     SpinnerComponent,
     CloseDialogBtnComponent
   ],
-  providers: [ LocalStorageService ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [ LocalStorageService ],
+    };
+  }
+}

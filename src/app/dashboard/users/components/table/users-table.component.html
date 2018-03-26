@@ -1,4 +1,4 @@
-<mat-card class="users-table">
+<mat-card class="users-table" *ngIf="users$ | async as users">
 
   <app-spinner class="spinner" *ngIf="!users.length"></app-spinner>
 
@@ -26,7 +26,7 @@
 
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let user"> 
+      <mat-cell *matCellDef="let user">
         <app-edit-user-btn [user]="user"></app-edit-user-btn>
         <app-delete-user-btn></app-delete-user-btn>
       </mat-cell>

@@ -17,14 +17,14 @@ import { AppHttpInterceptor } from './_common/services/http.interceptor';
   ],
   imports: [
     BrowserModule,
-    SharedModule,
+    SharedModule.forRoot(),
     AuthModule,
     DashboardModule,
     NoopAnimationsModule,
     router
   ],
   exports: [],
-  providers: [ 
+  providers: [
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }
    ],

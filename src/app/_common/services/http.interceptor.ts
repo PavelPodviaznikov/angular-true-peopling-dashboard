@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
@@ -23,12 +22,14 @@ export class AppHttpInterceptor implements HttpInterceptor {
 
     return next
       .handle(request)
-      .catch(response => {
-        if(response instanceof HttpErrorResponse && response.status === 401) {
-          this.router.navigate(['login']);
-        }
+      .pipe(
+        catchError(response => {
+          if(response instanceof HttpErrorResponse && response.status === 401) {
+            this.router.navigate(['login']);
+          }
 
-        return Observable.throw(response);
-      });
+          return Observable.throw(response);
+        })
+      );
   }
 }

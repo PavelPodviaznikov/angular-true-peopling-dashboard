@@ -38,6 +38,8 @@ export class UserDialogService {
   }
 
   submit(user) {
-    this.usersService.saveUser(user);
+    this.usersService.saveUser(user).subscribe(() => {
+      console.log('saved')
+    });
   }
 }

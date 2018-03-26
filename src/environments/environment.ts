@@ -3,9 +3,11 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+const remote = "http://api.true-peopling.da-14.org/api/v1";
+
 export const environment = {
   production: false,
   constants: {
-    BASE_URL: "http://api.true-peopling.da-14.org/api/v1"
+    BASE_URL: "http://localhost:3001/api/v1"
   }
 };

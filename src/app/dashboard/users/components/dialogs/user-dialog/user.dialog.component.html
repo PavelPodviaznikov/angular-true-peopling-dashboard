@@ -4,23 +4,23 @@
     <mat-form-field>
       <input matInput placeholder="First name" [(ngModel)]="user.firstName">
     </mat-form-field>
-  
+
     <mat-form-field>
       <input matInput placeholder="Last name" [(ngModel)]="user.lastName">
     </mat-form-field>
-  
+
     <mat-form-field>
       <input matInput placeholder="Email" [(ngModel)]="user.email">
     </mat-form-field>
-  
+
     <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="user.role">{{user.role}}</mat-option>
+      <mat-select placeholder="Select" [(value)]="user.role">
+        <mat-option *ngFor="let role of roles | objectKeys" [value]="role.key">{{role.value}}</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button (click)="submit()">{{config.actions.submit}}</button>
+    <button class="green-bordered-btn" mat-button (click)="submit()">{{config.actions.submit}}</button>
     <button mat-button mat-dialog-close>{{config.actions.cancel}}</button>
   </mat-dialog-actions>
 </div>

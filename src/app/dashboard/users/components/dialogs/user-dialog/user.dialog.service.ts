@@ -16,10 +16,10 @@ export class UserDialogService {
   openDialog(user?) {
     const me = this;
 
-    user = user || User.defaulUser();
+    user = user || User.defaultUser();
 
     const dialogRef = this.dialog.open(UserDialogComponent, {
-      data: { 
+      data: {
         user,
         submitDialogHandler(user) {
           me.submit(user);

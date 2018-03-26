@@ -40,7 +40,7 @@ export class AuthService {
     const url = `${environment.constants.BASE_URL}/auth/signin`;
     const idToken = this.ls.getGoogleToken();
 
-    this.http.post<responseData>(url, { idToken }, { headers: { 'Content-Type': 'application/json' } })
+    this.http.post<responseData>(url, { idToken })
       .subscribe(
         response => this.onLoginSuccess(response),
         error => this.onLoginFail(error)

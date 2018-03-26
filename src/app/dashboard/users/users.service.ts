@@ -34,7 +34,9 @@ export class UsersService {
   }
 
   saveUser(user) {
-    return user.id ?
+    user = User.toApiModel(user);
+
+    return user._id ?
       this.updateUser(user) :
       this.createUser(user);
   }
@@ -42,7 +44,7 @@ export class UsersService {
   private createUser(user) {
     const url = `${environment.constants.BASE_URL}/users`;
 
-    this.http.post<responseData>(url, user)
+    return this.http.post<responseData>(url, user)
       .subscribe(
         response => this.onUserCreateSuccess(response),
         e => this.onUserCreateFail(e)
@@ -50,28 +52,32 @@ export class UsersService {
   }
 
   private updateUser(user) {
-    const url = `${environment.constants.BASE_URL}/users/${user.id}`;
+    const url = `${environment.constants.BASE_URL}/users/${user._id}`;
 
-    this.http.put<responseData>(url, user)
+    return this.http.put<responseData>(url, user)
       .subscribe(
         response => this.onUserUpdateSuccess(response),
         e => this.onUserUpdateFail(e)
       );
   }
-  
+
   private onUserCreateSuccess(response) {
-    debugger;
+    if(!response.data) return false;
+
+    this.users.push(new User(response.data));
   }
 
   private onUserCreateFail(e) {
-    debugger;
+    console.warn(e);
   }
 
   private onUserUpdateSuccess(response) {
-    debugger;
+    const user = this.users.filter(user => user.id === response.data._id)[0];
+
+    user.update(response.data);
   }
 
   private onUserUpdateFail(e) {
-    debugger;
+    console.warn(e);
   }
 }

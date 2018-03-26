@@ -38,7 +38,25 @@ export default class User {
     return roles[this.role];
   }
 
-  static defaulUser() {
+  update(user: ApiUser) {
+    this.firstName = user.first_name;
+    this.lastName = user.last_name;
+    this.email = user.email;
+    this.role = user.role;
+  }
+
+  static toApiModel(user) {
+    return {
+      _id: user.id,
+      email: user.email,
+      deleted: user.deleted,
+      first_name: user.firstName,
+      last_name: user.lastName,
+      role: user.role
+    }
+  }
+
+  static defaultUser() {
     return new User({
       _id: null,
       email: '',

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import User from '../../../../../_common/models/user.model';
+import roles from '../../../../../_common/enums/roles';
 
 interface dialogData {
   user: User,
@@ -18,6 +19,8 @@ export class UserDialogComponent implements OnInit {
   ngOnInit() {}
 
   user = {...this.data.user};
+
+  roles = roles;
 
   config = {
     title: this.user.id ? "Edit user" : "Create user",

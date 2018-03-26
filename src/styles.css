@@ -34,3 +34,14 @@ app-dashboard app-users {
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: #0094de;
 }
+
+.green-bordered-btn {
+  border: 1px solid #72ba3a!important;
+  color: #72ba3a!important;
+}
+
+.green-bordered-btn:hover {
+  background-color: #72ba3a!important;
+  color: #fff!important;
+}
+

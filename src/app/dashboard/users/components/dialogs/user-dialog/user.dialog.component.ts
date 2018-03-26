@@ -5,7 +5,8 @@ import roles from '../../../../../_common/enums/roles';
 
 interface dialogData {
   user: User,
-  submitDialogHandler: Function
+  submitDialogHandler: Function,
+  closeDialogHandler: Function
 }
 
 @Component({
@@ -24,6 +25,7 @@ export class UserDialogComponent implements OnInit {
 
   config = {
     title: this.user.id ? "Edit user" : "Create user",
+    createAnother: false,
     actions: {
       submit: this.user.id ? "Edit" : "Create",
       cancel: "Cancel"
@@ -32,5 +34,11 @@ export class UserDialogComponent implements OnInit {
 
   submit() {
     this.data.submitDialogHandler(this.user);
+
+    if(this.config.createAnother) this.user = User.defaultUser();
+  }
+
+  close() {
+    this.data.closeDialogHandler();
   }
 }

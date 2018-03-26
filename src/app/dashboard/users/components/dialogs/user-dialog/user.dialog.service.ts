@@ -13,21 +13,26 @@ export class UserDialogService {
 
   }
 
+  private dialogRef;
+
   openDialog(user?) {
     const me = this;
 
     user = user || User.defaultUser();
 
-    const dialogRef = this.dialog.open(UserDialogComponent, {
+    this.dialogRef = this.dialog.open(UserDialogComponent, {
       data: {
         user,
         submitDialogHandler(user) {
           me.submit(user);
+        },
+        closeDialogHandler() {
+          me.dialog.closeAll();
         }
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }

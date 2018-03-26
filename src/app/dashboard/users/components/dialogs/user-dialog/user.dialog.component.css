@@ -1,8 +1,24 @@
 .user-dialog {
   min-width: 400px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-dialog .dialog-header {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-dialog .dialog-header h2 {
+  margin: 0;
 }
 
 .user-dialog mat-dialog-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
 }

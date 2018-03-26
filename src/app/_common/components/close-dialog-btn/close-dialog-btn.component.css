@@ -1,0 +1,7 @@
+.close-dialog {
+  cursor: pointer;
+}
+
+.close-dialog:hover {
+  opacity: 0.8;
+}

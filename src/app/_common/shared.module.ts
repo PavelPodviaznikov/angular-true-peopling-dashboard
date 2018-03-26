@@ -5,6 +5,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { CloseDialogBtnComponent } from './components/close-dialog-btn/close-dialog-btn.component';
 
 @NgModule({
   imports: [
@@ -15,12 +16,14 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   exports: [
     LogoComponent,
     SpinnerComponent,
+    CloseDialogBtnComponent,
     MaterialModule,
     FormsModule
   ],
   declarations: [
     LogoComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CloseDialogBtnComponent
   ],
   providers: [ LocalStorageService ]
 })

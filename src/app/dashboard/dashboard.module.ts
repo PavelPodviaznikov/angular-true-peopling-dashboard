@@ -14,6 +14,8 @@ import { EditUserBtnComponent } from './users/components/buttons/edit-user-btn/e
 import { DeleteUserBtnComponent } from './users/components/buttons/delete-user-btn/delete-user-btn.component';
 import { UserDialogComponent } from './users/components/dialogs/user-dialog/user.dialog.component';
 import { UserDialogService } from './users/components/dialogs/user-dialog/user.dialog.service';
+import { ConfirmDeleteDialogComponent } from './users/components/dialogs/confirm-delete-dialog/confirm-delete-dialog.component';
+import { ConfirmDeleteDialogService } from './users/components/dialogs/confirm-delete-dialog/confirm.delete.dialog.service';
 
 @NgModule({
   imports: [
@@ -31,9 +33,10 @@ import { UserDialogService } from './users/components/dialogs/user-dialog/user.d
     CreateUserBtnComponent,
     EditUserBtnComponent,
     DeleteUserBtnComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    ConfirmDeleteDialogComponent
   ],
-  providers: [ UsersService, UserDialogService ],
-  entryComponents: [UserDialogComponent]
+  providers: [ UsersService, UserDialogService, ConfirmDeleteDialogService ],
+  entryComponents: [UserDialogComponent, ConfirmDeleteDialogComponent]
 })
 export class DashboardModule { }

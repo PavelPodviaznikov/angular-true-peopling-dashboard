@@ -46,14 +46,29 @@ export class UsersService {
       this.createUser(user);
   }
 
+  deleteUser(user) {
+    const url = `${environment.constants.BASE_URL}/users/${user.id}`;
+
+    const req =  this.http.delete<responseData>(url).pipe(share());
+
+    req.subscribe(
+        response => this.onUserDeleteSuccess(response),
+        e => this.onUserDeleteFail(e)
+      );
+      
+    return req;
+  }
+
   private createUser(user) {
     const url = `${environment.constants.BASE_URL}/users`;
 
     const req = this.http.post<responseData>(url, user).pipe(share());
+
     req.subscribe(
         response => this.onUserCreateSuccess(response),
         e => this.onUserCreateFail(e)
       );
+
     return req;
   }
 
@@ -61,15 +76,18 @@ export class UsersService {
     const url = `${environment.constants.BASE_URL}/users/${user._id}`;
 
     const req = this.http.put<responseData>(url, user).pipe(share());
+
     req.subscribe(
       response => this.onUserUpdateSuccess(response),
       e => this.onUserUpdateFail(e)
-    )
+    );
+
     return req;
   }
 
   private onUserCreateSuccess(response) {
     if(!response.data) return false;
+
     this.users$$.next([...this.users$$.getValue(), new User(response.data)]);
   }
 
@@ -84,11 +102,32 @@ export class UsersService {
       return;
     }
 
-    const value = this.users$$.getValue()
-    this.users$$.next([...value.slice(0, userIdx), new User(response.data), ...value.slice(userIdx + 1, value.length)]);
+    const users = this.users$$.getValue();
+    
+    users[userIdx] = new User(response.data);
+    this.users$$.next([...users]);
   }
 
   private onUserUpdateFail(e) {
+    console.warn(e);
+  }
+
+  private onUserDeleteSuccess(response) {
+    if(!response.data) return false;
+
+    const userIdx = this.users$$.getValue().findIndex(user => user.id === response.data._id);
+
+    if (userIdx === -1){
+      return;
+    }
+
+    const users = this.users$$.getValue();
+    
+    users.splice(userIdx, 1);
+    this.users$$.next([...users]);
+  }
+
+  private onUserDeleteFail(e) {
     console.warn(e);
   }
 }

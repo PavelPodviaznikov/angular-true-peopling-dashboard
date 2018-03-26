@@ -1,0 +1,12 @@
+<div class="confirm-delete-dialog">
+  <mat-dialog-content>
+    <h2>Are you sure you want delete {{config.user}}?</h2>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button class="red-bordered-btn" mat-button (click)="submit()" [disabled]="config.processing">{{config.actions.submit}}</button>
+    <button mat-button mat-dialog-close [disabled]="config.processing">{{config.actions.cancel}}</button>
+    <span class="flex"></span>
+    <app-spinner *ngIf="config.processing" [size]="30"></app-spinner>
+  </mat-dialog-actions>
+</div>

@@ -45,6 +45,16 @@ app-dashboard app-users {
   color: #fff!important;
 }
 
+.red-bordered-btn:not(:disabled) {
+  border: 1px solid #ff1919!important;
+  color: #ff1919!important;
+}
+
+.red-bordered-btn:not(:disabled):hover {
+  background-color: #ff1919!important;
+  color: #fff!important;
+}
+
 .mat-checkbox-checked.mat-accent .mat-checkbox-background:not(:disabled),
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background:not(:disabled) {
   background-color: #72ba3a!important;
